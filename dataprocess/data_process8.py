@@ -323,22 +323,26 @@ def dataprocess(filename, data_type,windversion):
 #        print(df.head())
 
         if windversion == 'old':            
-            df.to_csv('/home/Team4/Team4/dataset/'+data_type+'_'+windversion+'_wind_4240.csv',index=False,float_format='%.3f')
+            df.to_csv(folder_path +data_type+'_'+windversion+'_wind_4240.csv',index=False,float_format='%.3f')
         else:
-            df.to_csv('/home/Team4/Team4/dataset/'+data_type+'_'+windversion+'_wind_1ave_8extend.csv',index=False,float_format='%.3f')
+            df.to_csv(folder_path+data_type+'_'+windversion+'_wind_1ave_8extend.csv',index=False,float_format='%.3f')
 
     return df
 
+
+
+
 #the path of train set & the path of testB set
-trainfile = 'data_new/CIKM2017_train/train.txt'
-testBfile = 'data_new/CIKM2017_testB/testB.txt'
+folder_path = r"C:\Users\qiaos\Desktop\CIKM 2017_rank4\\"
+trainfile = r'C:\Users\qiaos\Desktop\CIKM 2017_rank4\train.txt'
+testBfile = r'C:\Users\qiaos\Desktop\CIKM 2017_rank4\testB.txt'
 
 #produces the train set of 'old' wind
-#dataprocess(trainfile, data_type='train',windversion='old')
+dataprocess(trainfile, data_type='train',windversion='old')
 #proceces the testB set of 'old' wind
-#dataprocess(testBfile, data_type='testB',windversion='old')
+dataprocess(testBfile, data_type='testB',windversion='old')
 
 #produces the extended train set
-#dataprocess(trainfile, data_type='train',windversion='new')
+dataprocess(trainfile, data_type='train',windversion='new')
 #produces the extended testB set
-#dataprocess(testBfile, data_type='testB',windversion='new')
+dataprocess(testBfile, data_type='testB',windversion='new')

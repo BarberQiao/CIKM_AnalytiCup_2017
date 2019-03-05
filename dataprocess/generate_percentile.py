@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from settings import *
 
 # produces percentile data
 def percentile(line, data_type):
@@ -74,7 +75,7 @@ def data_process(filename, data_type):
             df = df.append(df_temp, ignore_index=True)
 
 #        print(df.head())
-        df.to_csv('/home/Team4/Team4/dataset/'+data_type+'_percentile.csv',index=False,float_format='%.3f')
+        df.to_csv(folder_path +data_type+'_percentile.csv',index=False,float_format='%.3f')
     return df
 
 

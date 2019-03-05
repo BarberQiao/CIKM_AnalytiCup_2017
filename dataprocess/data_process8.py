@@ -3,6 +3,7 @@ sys.path.append('..')
 import numpy as np
 import pandas as pd
 from dataprocess import FeatureSelect as fs
+from settings import *
 
 #get the wind direct, old version
 def windDriectold(pooling_mat):
@@ -328,21 +329,3 @@ def dataprocess(filename, data_type,windversion):
             df.to_csv(folder_path+data_type+'_'+windversion+'_wind_1ave_8extend.csv',index=False,float_format='%.3f')
 
     return df
-
-
-
-
-#the path of train set & the path of testB set
-folder_path = r"C:\Users\qiaos\Desktop\CIKM 2017_rank4\\"
-trainfile = r'C:\Users\qiaos\Desktop\CIKM 2017_rank4\train.txt'
-testBfile = r'C:\Users\qiaos\Desktop\CIKM 2017_rank4\testB.txt'
-
-#produces the train set of 'old' wind
-dataprocess(trainfile, data_type='train',windversion='old')
-#proceces the testB set of 'old' wind
-dataprocess(testBfile, data_type='testB',windversion='old')
-
-#produces the extended train set
-dataprocess(trainfile, data_type='train',windversion='new')
-#produces the extended testB set
-dataprocess(testBfile, data_type='testB',windversion='new')

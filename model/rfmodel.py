@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
 from sklearn.ensemble import RandomForestRegressor
-
+from settings import *
 # produces random forest model
 def rf_model(train_df, test_df, mode, train_add,test_add, ne, index=0):
 

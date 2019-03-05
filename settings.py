@@ -1,0 +1,1 @@
+folder_path = r"C:\Users\qiaos\Desktop\CIKM 2017_rank4\\"

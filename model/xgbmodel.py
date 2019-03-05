@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import xgboost as xgb
 from sklearn.model_selection import KFold
-
+from settings import *
 # produces xgboost model
 def xgb_train(train_df, test_df, mode, params,num_boost_round,early_stopping):
 

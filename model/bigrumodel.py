@@ -12,7 +12,7 @@ from keras.layers.pooling import GlobalAveragePooling1D
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 import os
 from keras.regularizers import L1L2
-
+from settings import *
 np.random.seed(28)
 set_random_seed(28)
 

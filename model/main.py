@@ -8,20 +8,20 @@ from dataprocess import data_process8 as dp
 from dataprocess import generate_percentile as gp
 import xgbmodel as xgbm
 import bigrumodel as bigru
-
+from settings import *
 
 def check_code(mode, gru_mode):
 
     if(mode == 'simple'):
-        train_df = pd.read_csv('/home/Team4/Team4/dataset/train_percentile.csv')
-        test_df = pd.read_csv('/home/Team4/Team4/dataset/testB_percentile.csv')
-        train_add = pd.read_csv('/home/Team4/Team4/dataset/train_old_wind_4240.csv')
-        testA_add = pd.read_csv('/home/Team4/Team4/dataset/testB_old_wind_4240.csv')
-        train_1ave8extend = pd.read_csv('/home/Team4/Team4/dataset/train_new_wind_1ave_8extend.csv')
-        test_1ave = pd.read_csv('/home/Team4/Team4/dataset/testB_new_wind_1ave_8extend.csv')
+        train_df = pd.read_csv(folder_path + 'train_percentile.csv')
+        test_df = pd.read_csv(folder_path + 'testB_percentile.csv')
+        train_add = pd.read_csv(folder_path + 'train_old_wind_4240.csv')
+        testA_add = pd.read_csv(folder_path + 'testB_old_wind_4240.csv')
+        train_1ave8extend = pd.read_csv(folder_path + 'train_new_wind_1ave_8extend.csv')
+        test_1ave = pd.read_csv(folder_path + 'testB_new_wind_1ave_8extend.csv')
     else:
-        trainfile = '/home/Team4/CIKM2017/train.txt'
-        testBfile = '/home/Team4/CIKM2017/testB.txt'
+        trainfile = folder_path + 'train.txt'
+        testBfile = folder_path + 'testB.txt'
         #生成训练集数据,老的风
         train_add = dp.dataprocess(trainfile, data_type='train', windversion='old')
         #生成测试集B数据,老的风
@@ -34,12 +34,9 @@ def check_code(mode, gru_mode):
         train_df = gp.data_process(trainfile, data_type='train')
         #生成测试集B数据
         test_df = gp.data_process(testBfile, data_type='testB')
-
-
     print('#data process has been done')
 
     result_xgb = xgbm.xgbmodeltrain(train_1ave8extend, test_1ave)
-
     print('#xgb model has been done')
 
     index = fs.pre_train(train_df=train_df, test_df=test_df, train_add=train_add, test_add=testA_add)
@@ -57,7 +54,7 @@ def check_code(mode, gru_mode):
 
     ensemble = (result_xgb+result_rf+result_bigru)/3.0
 
-    np.savetxt("/home/Team4/Team4/result/submit_Team4.csv", ensemble)
+    np.savetxt(folder_path + "submit_Team4.csv", ensemble)
 
 #check_code('simple', 'online')
 

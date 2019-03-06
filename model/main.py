@@ -8,7 +8,8 @@ from dataprocess import data_process8 as dp
 from dataprocess import generate_percentile as gp
 import xgbmodel as xgbm
 import bigrumodel as bigru
-from settings import *
+
+
 
 def check_code(mode, gru_mode):
 

@@ -147,7 +147,7 @@ def BiGRU_train(train_data, test_data, error_sort, train_mode):
     else:
         # load the pre-trained model
         print('#load the pre-trained model:')
-        model = load_model('/home/Team4/Team4/model/checkpoint-27-163.96.hdf5')
+        model = load_model(folder_path + 'checkpoint-27-163.96.hdf5')
 
     #calculate root mean squared error
     trainPredict = model.predict(X_train)
